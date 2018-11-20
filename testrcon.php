@@ -34,7 +34,7 @@ if (isset($_POST['delete'])) {
 				
             $con = new q3query($server['2'], $server['3'], $success);
             if (!$success) {
-                die ("Fehler bei der Verbindungherstellung");
+                die ("Server Test Error");
             }
             $con->setRconpassword($server['4']);
             $con->rcon("say hi");
