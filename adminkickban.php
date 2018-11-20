@@ -46,7 +46,7 @@ if (isset($_POST['delete'])) {
     $serverinfo = array
        (
 
-        array("0","SinisterRPChicagoLaw","185.249.196.181","32066",""),
+        array("0","SinisterRPChicagoLaw","185.249.196.181","32066","a"),
 	    
 
            
