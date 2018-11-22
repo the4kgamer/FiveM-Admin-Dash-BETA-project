@@ -24,11 +24,12 @@ if (isset($_POST['next'])) {
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $result = mysqli_query($con, "SELECT * FROM users WHERE name = '" . $name . "' and password = '" . $password . "'");
     $ownerres = mysqli_query($con, "SELECT * FROM disablelogs WHERE victim = '" . $name . "'");
-    $authorisedsession = mysqli_query($con, "SELECT * FROM sessionapproved WHERE name = '" . $name . "'");
+    
 
 
 
     if ($row = mysqli_fetch_array($result)) {
+
 
 
         $_SESSION['usr_OwnerConfirm'] = $row['OwnerConfirm'];
@@ -60,14 +61,29 @@ if (isset($_POST['next'])) {
             }
             
            
-            if($row = mysqli_fetch_array($authorisedsession)) {
+
+            
+            if ($_SESSION['usr_perm'] !== "owner") {
+                if(mysqli_query($con, "INSERT INTO sessionapproved(name, since, perm) VALUES('" . $name . "','" . $time . "','" . $_SESSION['usr_perm'] . "')")){ 
+    
+                }
+            }
+            $authorisedsession = mysqli_query($con, "SELECT * FROM sessionapproved WHERE name = '" . $name . "'");
+            if($row != mysqli_fetch_array($authorisedsession)) {
                 $_SESSION['usr_sessAUTH'] = true;
                 header("Location: dash.php");
             }
             else 
             {
-                $_SESSION['usr_sessAUTH'] = false;
-                hehader("location : awaitaccess.php");
+                if ($_SESSION['usr_perm'] !== "owner") {
+                    $_SESSION['usr_sessAUTH'] = false;
+                    hehader("location : awaitaccess.php");
+
+                }
+                else
+                $_SESSION['usr_sessAUTH'] = true;
+                header("Location: dash.php");
+              
                 
 
             }
