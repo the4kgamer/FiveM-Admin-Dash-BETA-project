@@ -76,6 +76,20 @@ if (isset($_POST['OnlineStaff'])) {
 
 }
 
+if (isset($_POST['staffsessapproval'])) {
+
+    if ($_SESSION['usr_perm'] == "owner") {
+        header("location: StaffWaiting.php");
+        
+    }
+    else 
+    {
+        $permerror = "you do not have access to this";
+    }
+        
+    
+}
+
 if ($_SESSION['usr_role'] == "owner") {
 }
 
@@ -230,6 +244,10 @@ width="2" height="0">
 
                      <div class="form-group">
                         <input type="submit" name="OnlineStaff" value="Online Staff" class="btn btn-primary" />
+                    </div>
+
+                     <div class="form-group">
+                        <input type="submit" name="staffsessapproval" value="Staff Awaitng Session approval" class="btn btn-primary" />
                     </div>
 
                     <span class="text-danger"><?php if (isset($permerror)) { echo $permerror; } ?></span>
