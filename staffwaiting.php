@@ -22,14 +22,14 @@ if (isset($_POST['delete'])) {
    
    
 
-    $managename = mysqli_real_escape_string($con, $_POST['acceptname']);
+    $managename = mysqli_real_escape_string($con, $_POST['approvename']);
     
-    $management = mysqli_query($con, "SELECT * FROM sessionapproved WHERE name = '" . $managename. "'");
+    $management = mysqli_query($con, "SELECT * FROM sessionapproved WHERE name = '" . $managename . "'");
   
     
 
     if ($row = mysqli_fetch_array($management)) {
-        $result = mysqli_query($con, "DELETE FROM sessionapproved WHERE name = '" . $management . "'");
+        $result = mysqli_query($con, "DELETE FROM sessionapproved WHERE name = '" . $managename . "'");
 
         
 
@@ -159,7 +159,7 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "name: " . $row["name"]. " - perm: " . $row["perm"]. "<br>";
+        echo "staff member: " . $row["name"]. " - perm: " . $row["perm"]. " requested at: " . $row["since"] . "<br>";
     }
 } else {
     echo "0 results";
