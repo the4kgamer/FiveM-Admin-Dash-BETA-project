@@ -37,18 +37,25 @@ function yeet() {
 
 
                var name = data[a].name;
-               var message = data[a].message;
-               var time = data[a].time;
+               var awaitname = <?php echo $name ?>
+              
+              
                
-               if (name = $name) {
+               
 
-                   document.getElementById("demo").innerHTML = "name detected";
+               
+              
+               if (<?php echo $name ?> = name) {
 
-                   
-
-                   
-
+                   header('Location: dash.php');
                }
+               
+
+                
+               
+           
+               
+               
               
 
 
@@ -108,7 +115,7 @@ function yeet() {
 <h1> please wait for a senior admin or above to approve your access request, please be patiant </h1>
 
 
-
+<img src="loading.gif" width="500" height="500">
 
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/bootstrap.min.js"></script>
