@@ -47,6 +47,8 @@ if (mysqli_num_rows($resultmsg) > 0) {
 
 ?>
 
+<h6> System made by The4kGamer#8973</h6>
 
+<a href="https://github.com/the4kgamer">github.com/the4kgamer</a>
 
 

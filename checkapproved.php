@@ -2,8 +2,8 @@
 
 $conn = mysqli_connect("localhost", "root", "", "adminmanagement");
 
+//$result = mysqli_query($conn, "SELECT * FROM sessionapproved WHERE name = '" . $_SESSION['usr_name'] . "'");
 $result = mysqli_query($conn, "SELECT * FROM sessionapproved");
-
 $data = array();
 
 while ($row = mysqli_fetch_assoc($result))
@@ -13,3 +13,7 @@ while ($row = mysqli_fetch_assoc($result))
 }
 
 echo json_encode($data);
+
+
+?> 
+

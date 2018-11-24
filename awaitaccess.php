@@ -3,110 +3,22 @@
 
 include_once 'dbconnect.php';
 session_start();
-
+header("Refresh:0");
 $authed = mysqli_real_escape_string($con, $_SESSION['usr_sessAUTH']);
 $name = mysqli_real_escape_string($con, $_SESSION['usr_name']);
 echo "latest";
 echo $name;
-?>
-<script>
-setInterval(function() { yeet() },1);
-
-
-function yeet() {
-    var ajax = new XMLHttpRequest();
-    var method = "GET";
-    var url = "checkapproved.php";
-    var asynchronous = true;
-
-    ajax.open(method, url, asynchronous);
-    ajax.send();
-    ajax.onreadystatechange = function()
-    {
-        if (this.readyState == 4 && this.status == 200)
-        {
-            var data = JSON.parse(this.responseText);
-           console.log(data);
-           var html = "";
-           for (var a = 0; a < data.length; a++){
-               
-
-
-
-
-
-
-               var name = data[a].name;
-               var awaitname = <?php echo $name ?>
-              
-              
-               
-               
-
-               
-              
-               if (<?php echo $name ?> = name) {
-
-                   header('Location: dash.php');
-               }
-               
-
-                
-               
-           
-               
-               
-              
-
-
-
-
-                   
-              
-               
-               
-               
-             
-               
-           }
-           document.getElementById("data").innerHTML = html;
-        
-
-           
-
-        }
-
-
-           
-        
-        
-          
-           
-
-    
-        
-
-        
-
-
-
-        
-        
-        
-    }
+$authorisedsession = mysqli_query($con, "SELECT * FROM sessionapproved WHERE name = '" . $name . "'");
+if ($row = mysqli_fetch_array($authorisedsession)) {
 
    
-    
-        
-        
-
-        
 }
+else
+{
+    header("location: dash.php");
 
-    
-
-</script>
-
+}
+?>
 
         
 
@@ -116,7 +28,10 @@ function yeet() {
 
 
 <img src="loading.gif" width="500" height="500">
-
+<h6> "I tried to get AJAX constant SQL fetching without having to refresh the page to work, but I was never successful, I don't know why, the code should of been right but I guess I am just too lazy" </h6>
+<h6> -The4kgamer </h6>
+<h6> System made by The4kgamer (2018) </h6>
+<a href="https://github.com/the4kgamer">github.com/the4kgamer</a>
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
