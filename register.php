@@ -262,7 +262,7 @@ width="2" height="0">
 </div>
 <h6> System made by The4kGamer#8973</h6>
 
-<a href="https://github.com/the4kgamer">github.com/the4kgamer</a>
+<a href="https://github.com/the4kgamer">GitHub</a>
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
